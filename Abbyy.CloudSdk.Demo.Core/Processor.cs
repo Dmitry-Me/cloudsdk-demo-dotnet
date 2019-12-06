@@ -1,4 +1,4 @@
-﻿// Copyright © 2019 ABBYY Production LLC
+// Copyright © 2019 ABBYY Production LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -230,10 +230,10 @@ namespace Abbyy.CloudSdk.Demo.Core
 					var textParams = ProcessingParamsBuilder.GetTextFieldProcessingParams(options);
 					return _ocrClient.ProcessTextFieldAsync(textParams, fileStream, options.FileName);
 				case Mode.BarcodeField:
-					var barcodeParams = ProcessingParamsBuilder.GetBarcodeFieldProcessingParams();
+					var barcodeParams = ProcessingParamsBuilder.GetBarcodeFieldProcessingParams(options);
 					return _ocrClient.ProcessBarcodeFieldAsync(barcodeParams, fileStream, options.FileName);
 				case Mode.CheckmarkField:
-					var checkmarkParams = ProcessingParamsBuilder.GetCheckmarkFieldProcessingParams();
+					var checkmarkParams = ProcessingParamsBuilder.GetCheckmarkFieldProcessingParams(options);
 					return _ocrClient.ProcessCheckmarkFieldAsync(checkmarkParams, fileStream, options.FileName);
 				default:
 					throw new InvalidOperationException("Wrong operation");
@@ -403,7 +403,7 @@ namespace Abbyy.CloudSdk.Demo.Core
 
 						var path = Path.Combine(options.TargetPath, $"{options.FileName ?? "document"}.{url.Format.ToExtension()}");
 
-						using (var fileStream = File.OpenWrite(path))
+						using (var fileStream = File.Open(path, FileMode.Create, FileAccess.Write))
 						{
 							var resultStream = await httpClient
 								.GetStreamAsync(url.Url)

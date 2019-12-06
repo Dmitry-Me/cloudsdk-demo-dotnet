@@ -12,21 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.Drawing;
 using System.Windows;
 
 namespace Abbyy.CloudSdk.Demo.WindowsApp
 {
 	public class RegionSelectedEventArgs : System.EventArgs
 	{
-		public RegionSelectedEventArgs(Rect r, Bitmap cropped)
+		public RegionSelectedEventArgs(Rect rect)
 		{
-			SelectedRectangle = r;
-			CroppedImage = cropped;
+			SelectedRectangle = rect;
 		}
 
 		public Rect SelectedRectangle { get; set; }
-
-		public Bitmap CroppedImage { get; set; }
 	}
 }

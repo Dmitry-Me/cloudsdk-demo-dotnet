@@ -1,4 +1,4 @@
-﻿// Copyright © 2019 ABBYY Production LLC
+// Copyright © 2019 ABBYY Production LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -50,17 +50,27 @@ namespace Abbyy.CloudSdk.Demo.Core
 
 		public static TextFieldProcessingParams GetTextFieldProcessingParams(Options options)
 	    {
-		    return new TextFieldProcessingParams { Language = options.Language };
+			return new TextFieldProcessingParams
+			{
+				Language = options.Language,
+				Region = options.Region?.Format(),
+			};
 		}
 
-	    public static CheckmarkFieldProcessingParams GetCheckmarkFieldProcessingParams()
+	    public static CheckmarkFieldProcessingParams GetCheckmarkFieldProcessingParams(Options options)
 	    {
-		    return new CheckmarkFieldProcessingParams();
+			return new CheckmarkFieldProcessingParams
+			{
+				Region = options.Region?.Format(),
+			};
 		}
 
-	    public static BarcodeFieldProcessingParams GetBarcodeFieldProcessingParams()
+	    public static BarcodeFieldProcessingParams GetBarcodeFieldProcessingParams(Options options)
 	    {
-		    return new BarcodeFieldProcessingParams();
+			return new BarcodeFieldProcessingParams
+			{
+				Region = options.Region?.Format(),
+			};
 		}
 
 	    public static BusinessCardProcessingParams GetBusinessCardProcessingParams(Options options)

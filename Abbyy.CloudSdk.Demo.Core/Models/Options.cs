@@ -1,4 +1,4 @@
-﻿// Copyright © 2019 ABBYY Production LLC
+// Copyright © 2019 ABBYY Production LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,6 +35,8 @@ namespace Abbyy.CloudSdk.Demo.Core.Models
 	    public string TargetPath { get; set; } = Directory.GetCurrentDirectory();
 
 	    public string XmlSettingsPath { get; set; }
+
+		public FieldRegion Region { get; set; }
 
 	    public string FileName => Path.GetFileNameWithoutExtension(SourcePath);
 	}
